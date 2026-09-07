@@ -1,30 +1,16 @@
-FROM python:3.10-slim
+FROM python:3.12.2
 
-# Python settings
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-ENV PIP_NO_CACHE_DIR=1
-
-# Project directory
-WORKDIR /VJ-FILTER-BOT
-
-# System packages
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        ffmpeg \
-        git \
-        ca-certificates && \
+    apt-get install -y --no-install-recommends git && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first for Docker cache
+WORKDIR /VJ-FILTER-BOT
+
 COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip --root-user-action=ignore && \
+    pip install --no-cache-dir -r requirements.txt --root-user-action=ignore
 
-# Upgrade pip and install Python packages
-RUN python -m pip install --upgrade pip && \
-    python -m pip install -r requirements.txt
-
-# Copy complete project
 COPY . .
 
-# Start Telegram bot
-CMD ["python", "bot.py"]
+CMD ["python3", "bot.py"]
