@@ -3,8 +3,7 @@
 # Ask Doubt on telegram @KingVJ01
 
 import logging, asyncio, os, re, random, pytz, aiohttp, requests, string, json, http.client
-from info import *
-# from imdb import Cinemagoer 
+from info import * from imdb import Cinemagoer 
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import enums
 from pyrogram.errors import *
