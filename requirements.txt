@@ -45,5 +45,5 @@ openai
 hachoir
 
 # Google Translate & Git-based Packages
-googletrans==4.0.0-rc1
+pygoogletranslation
 git+https://github.com/Joelkb/cinemagoer
