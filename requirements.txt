@@ -7,18 +7,22 @@ umongo
 requests
 bs4
 shortzy
-datetime
 pytz
 aiohttp
 
-
+# Youtube & Download tools
+yt-dlp
+youtube-dl
+ytthumb
+youtube-search-python==1.6.6
+youtube_search
 
 # Other tools
 opencv-python-headless==4.8.1.78
-python-dotenv==0.21.1
+python-dotenv==1.0.1
 PyLeaves==1.0.2
-humanize
-Pillow
+humanize==4.10.0
+Pillow>=10.0.0
 psutil
 numpy
 wheel
@@ -35,9 +39,11 @@ pyromod
 colorama
 fuzzywuzzy
 Levenshtein==0.24.0
-
-
-# Git-based Packages
-git+https://github.com/Joelkb/cinemagoer
+gTTS
+speedtest-cli
 openai
 hachoir
+
+# Google Translate & Git-based Packages
+googletrans==4.0.0-rc1
+git+https://github.com/Joelkb/cinemagoer
