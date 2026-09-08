@@ -44,4 +44,4 @@ speedtest-cli
 openai
 hachoir
 git+https://github.com/cinemagoer/cinemagoer
-git+https://github.com/ssut/googletrans.git
+googletrans==4.0.2
