@@ -9,7 +9,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 
 def upload_image_requests(image_path):
-    upload_url = "https://envs.sh"
+    upload_url = "https://envs.sh/index.php" # এখানে এন্ডপয়েন্ট ঠিক করা হয়েছে
 
     try:
         with open(image_path, 'rb') as file:
@@ -17,9 +17,18 @@ def upload_image_requests(image_path):
             response = requests.post(upload_url, files=files)
 
             if response.status_code == 200:
-                return response.text.strip() 
+                # সার্ভার কী রিটার্ন করছে তা চেক করা
+                response_text = response.text.strip()
+                
+                # envs.sh সাধারণত লিংকটি টেক্সট হিসেবে দেয়, তাই এটি সরাসরি নেওয়া হলো
+                if response_text.startswith("http"):
+                    return response_text
+                else:
+                    print(f"Unexpected response: {response_text}")
+                    return None
             else:
-                return print(f"Upload failed with status code {response.status_code}")
+                print(f"Upload failed with status code {response.status_code}")
+                return None  # print এর বদলে None রিটার্ন করা হয়েছে
 
     except Exception as e:
         print(f"Error during upload: {e}")
@@ -48,5 +57,4 @@ async def telegraph_upload(bot, update):
             ],[
             InlineKeyboardButton(text="✗ Close ✗", callback_data="close")
             ]])
-        )
-    
+    )
