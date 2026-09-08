@@ -43,6 +43,4 @@ gTTS
 speedtest-cli
 openai
 hachoir
-
-# Google Translate & Git-based Packages
-git+https://github.com/Joelkb/cinemagoer
+git+https://github.com/cinemagoer/cinemagoer
